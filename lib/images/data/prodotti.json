@@ -1,0 +1,170 @@
+[
+    {
+        "productId": "001",
+        "description": "Cono Piccolo",
+        "price": 3.0,
+        "categoryId": "C01",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E02",
+                "order": 2
+            },
+            {
+                "extraId": "E03",
+                "order": 3
+            }
+        ]
+    },
+    {
+        "productId": "002",
+        "description": "Cono Medio",
+        "price": 4.0,
+        "categoryId": "C01",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E02",
+                "order": 2
+            },
+            {
+                "extraId": "E03",
+                "order": 3
+            }
+        ]
+    },
+    {
+        "productId": "003",
+        "description": "Cono Grande",
+        "price": 4.5,
+        "categoryId": "C01",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E02",
+                "order": 2
+            },
+            {
+                "extraId": "E03",
+                "order": 3
+            }
+        ]
+    },
+    {
+        "productId": "004",
+        "description": "Coppetta Piccola",
+        "price": 3.0,
+        "categoryId": "C02",
+        "extras": [
+            {
+                "extraId": "E02",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            }
+        ]
+    },
+    {
+        "productId": "005",
+        "description": "Coppetta Media",
+        "price": 4.0,
+        "categoryId": "C02",
+        "extras": [
+            {
+                "extraId": "E02",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            }
+        ]
+    },
+    {
+        "productId": "006",
+        "description": "Coppetta Grande",
+        "price": 4.5,
+        "categoryId": "C02",
+        "extras": [
+            {
+                "extraId": "E02",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            }
+        ]
+    },
+    {
+        "productId": "007",
+        "description": "Vaschetta 300g",
+        "price": 5.0,
+        "categoryId": "C03",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            },
+            {
+                "extraId": "E05",
+                "order": 3
+            }
+        ]
+    },
+    {
+        "productId": "008",
+        "description": "Vaschetta 600g",
+        "price": 8.5,
+        "categoryId": "C03",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            },
+            {
+                "extraId": "E05",
+                "order": 3
+            }
+        ]
+    },
+    {
+        "productId": "009",
+        "description": "Vaschetta 900g",
+        "price": 10.0,
+        "categoryId": "C03",
+        "extras": [
+            {
+                "extraId": "E01",
+                "order": 1
+            },
+            {
+                "extraId": "E04",
+                "order": 2
+            },
+            {
+                "extraId": "E05",
+                "order": 3
+            }
+        ]
+    }
+]

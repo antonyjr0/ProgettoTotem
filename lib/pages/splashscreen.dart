@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progetto_totem/pages/carosello_immagini.dart';
+import 'package:progetto_totem/components/carosello_immagini.dart';
 import 'package:progetto_totem/pages/order_screen.dart';
 
 class Splashscreen extends StatelessWidget {
