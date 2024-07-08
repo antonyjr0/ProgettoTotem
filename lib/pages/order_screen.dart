@@ -37,39 +37,51 @@ class OrderScreen extends StatelessWidget {
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(23),
                           ),
-                          child: Column(
-                            children: [
-                              Expanded(
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Column(
+                              children: [
+                                Expanded(
                                   flex: 1,
                                   child: Container(
                                     margin: EdgeInsets.symmetric(
-                                        horizontal: 2, vertical: 2),
+                                      horizontal: 2,
+                                      vertical: 2,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(255, 102, 153, 0.6),
                                       borderRadius: BorderRadius.circular(23),
                                     ),
-                                  )),
-                              Expanded(
+                                  ),
+                                ),
+                                Expanded(
                                   flex: 1,
                                   child: Container(
                                     margin: EdgeInsets.symmetric(
-                                        horizontal: 2, vertical: 2),
+                                      horizontal: 2,
+                                      vertical: 2,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(255, 102, 153, 0.6),
                                       borderRadius: BorderRadius.circular(23),
                                     ),
-                                  )),
-                              Expanded(
+                                  ),
+                                ),
+                                Expanded(
                                   flex: 1,
                                   child: Container(
                                     margin: EdgeInsets.symmetric(
-                                        horizontal: 2, vertical: 2),
+                                      horizontal: 2,
+                                      vertical: 2,
+                                    ),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(255, 102, 153, 0.6),
                                       borderRadius: BorderRadius.circular(23),
                                     ),
-                                  ))
-                            ],
+                                  ),
+                                )
+                              ],
+                            ),
                           )),
                     ),
                   ),
