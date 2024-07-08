@@ -31,7 +31,8 @@ class CaroselloImmagini extends StatelessWidget {
               (item) => Center(
                   child: Image.network(
                 item,
-                fit: BoxFit.cover,
+                height: 500,
+                width: 300,
               )),
             )
             .toList(),
