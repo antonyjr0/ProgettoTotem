@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:progetto_totem/components/categories_bar.dart';
 import 'package:progetto_totem/components/product_bars.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key, required this.title});
   final String title;
+
+  @override
+  State<OrderScreen> createState() => _OrderScreenState();
+}
+
+class _OrderScreenState extends State<OrderScreen> {
+  String categoryId = 'C01';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +28,7 @@ class OrderScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(23),
             ),
             child: Center(
+              // ignore: avoid_unnecessary_containers
               child: Container(child: Text('Contenitore Totale Ordine')),
             ),
           ),
@@ -49,10 +58,12 @@ class OrderScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 102, 153, 0.5),
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(23),
                         ),
-                        child: ProductBars(),
+                        child: ProductBars(
+                          categoryId: categoryId,
+                        ),
                       ),
                     ),
                   )

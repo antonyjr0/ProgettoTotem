@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:progetto_totem/services/utils.dart';
 
 class CategoriesBar extends StatefulWidget {
+  CategoriesBar({super.key});
+
   @override
   State<StatefulWidget> createState() => _CategoriesBarState();
 }
