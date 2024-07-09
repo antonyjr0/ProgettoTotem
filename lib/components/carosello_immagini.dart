@@ -11,31 +11,40 @@ class CaroselloImmagini extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-      child: FlutterCarousel(
-        options: CarouselOptions(
-          showIndicator: false,
-          floatingIndicator: false,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 3),
-          disableCenter: true,
-          indicatorMargin: 12.0,
-          enableInfiniteScroll: true,
-          slideIndicator: const CircularSlideIndicator(),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 500,
+        width: 300,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(40)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(40),
+          child: FlutterCarousel(
+            options: CarouselOptions(
+              physics: NeverScrollableScrollPhysics(),
+              showIndicator: false,
+              floatingIndicator: false,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 3),
+              disableCenter: true,
+              indicatorMargin: 12.0,
+              enableInfiniteScroll: true,
+              viewportFraction: 1,
+              slideIndicator: CircularSlideIndicator(),
+            ),
+            items: imgList
+                .map(
+                  (item) => Center(
+                      child: Image.network(
+                    item,
+                    height: 500,
+                    width: 300,
+                    fit: BoxFit.cover,
+                  )),
+                )
+                .toList(),
+          ),
         ),
-        items: imgList
-            .map(
-              (item) => Center(
-                  child: Image.network(
-                item,
-                height: 500,
-                width: 300,
-              )),
-            )
-            .toList(),
       ),
     );
   }

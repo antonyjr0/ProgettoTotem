@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:progetto_totem/services/utils.dart';
 
 class CategoriesBar extends StatefulWidget {
-  CategoriesBar({super.key});
+  CategoriesBar({super.key, required this.callback});
+
+  final void Function(String) callback;
 
   @override
   State<StatefulWidget> createState() => _CategoriesBarState();
@@ -21,6 +23,8 @@ class _CategoriesBarState extends State<CategoriesBar> {
               setState(
                 () {
                   selectedCategoryIndex = i;
+                  widget.callback(
+                      Utils.categories[selectedCategoryIndex].categoryId);
                 },
               );
               print(i);
@@ -33,8 +37,8 @@ class _CategoriesBarState extends State<CategoriesBar> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: selectedCategoryIndex == i
-                      ? Color.fromRGBO(255, 102, 153, 0.7)
-                      : Color.fromRGBO(255, 102, 153, 0.5),
+                      ? Color.fromRGBO(255, 105, 180, 1)
+                      : Color.fromRGBO(255, 105, 180, 0.5),
                 ),
                 child: Center(child: Text(Utils.categories[i].name)),
               ),

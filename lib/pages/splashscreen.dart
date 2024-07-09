@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_totem/components/carosello_immagini.dart';
+import 'package:progetto_totem/components/footer_bar.dart';
 import 'package:progetto_totem/pages/order_screen.dart';
 
 class Splashscreen extends StatelessWidget {
@@ -17,17 +18,21 @@ class Splashscreen extends StatelessWidget {
         );
       },
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(102, 255, 153, 0.5),
+        backgroundColor: Color.fromRGBO(152, 251, 152, 0.5),
         body: Column(
           children: [
-            Center(
-              child: CaroselloImmagini(),
+            Expanded(
+              child: Center(
+                child: Container(
+                  child: CaroselloImmagini(),
+                ),
+              ),
             ),
             Container(
               height: 100,
               width: 350,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 102, 153, 0.5),
+                color: Color.fromRGBO(255, 105, 180, 0.5),
                 borderRadius: BorderRadius.circular(23),
               ),
               child: Center(
@@ -41,6 +46,7 @@ class Splashscreen extends StatelessWidget {
             ),
           ],
         ),
+        bottomNavigationBar: FooterBar(),
       ),
     );
   }

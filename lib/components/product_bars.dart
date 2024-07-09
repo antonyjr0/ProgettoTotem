@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:progetto_totem/services/utils.dart';
 
+// ignore: must_be_immutable
 class ProductBars extends StatefulWidget {
   ProductBars({super.key, required this.categoryId});
   String categoryId;
@@ -23,51 +25,63 @@ class _ProductBarsState extends State<ProductBars> {
       elementList.add(
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
             child: Container(
               height: 300,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color.fromRGBO(255, 102, 153, 0.5),
               ),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: Center(
-                    child: Text(filteredProducts[i].description),
-                  )),
-                  Expanded(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                OutlinedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        contatore -= 1;
-                                      });
-                                    },
-                                    child: Text('-')),
-                                Text(placeholder),
-                                OutlinedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        contatore += 1;
-                                      });
-                                    },
-                                    child: Text('+')),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+              child: Card(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Color.fromRGBO(255, 192, 203, 0.7),
                   ),
-                ],
+                  child: Row(
+                    children: [
+                      Expanded(
+                          child: Center(
+                        child: Text(filteredProducts[i].description),
+                      )),
+                      Expanded(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Center(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    OutlinedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                        ),
+                                        onPressed: () {},
+                                        child: Container(child: Text('-'))),
+                                    Text(placeholder),
+                                    OutlinedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                      ),
+                                      onPressed: () {},
+                                      child: Text('+'),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

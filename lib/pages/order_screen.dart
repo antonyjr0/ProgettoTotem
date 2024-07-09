@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_totem/components/categories_bar.dart';
+import 'package:progetto_totem/components/footer_bar.dart';
+import 'package:progetto_totem/components/header_bar.dart';
 import 'package:progetto_totem/components/product_bars.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -12,31 +14,24 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   String categoryId = 'C01';
+  String dataFromChild = '';
+  void onDataReceived(String data) {
+    setState(() {
+      dataFromChild = data;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(102, 255, 153, 0.5),
+      backgroundColor: Color.fromRGBO(152, 251, 152, 0.5),
       body: Column(
         children: [
-          Container(
-            height: 100,
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(vertical: 30, horizontal: 8),
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 102, 153, 0.5),
-              borderRadius: BorderRadius.circular(23),
-            ),
-            child: Center(
-              // ignore: avoid_unnecessary_containers
-              child: Container(child: Text('Contenitore Totale Ordine')),
-            ),
-          ),
+          HeaderBar(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               height: 400,
-              color: Colors.transparent,
               child: Row(
                 children: [
                   Expanded(
@@ -48,7 +43,9 @@ class _OrderScreenState extends State<OrderScreen> {
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: CategoriesBar(),
+                        child: CategoriesBar(
+                          callback: onDataReceived,
+                        ),
                       ),
                     ),
                   ),
@@ -58,11 +55,13 @@ class _OrderScreenState extends State<OrderScreen> {
                       padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.transparent,
+                          color: Color.fromRGBO(255, 105, 180, 0.5),
                           borderRadius: BorderRadius.circular(23),
                         ),
                         child: ProductBars(
-                          categoryId: categoryId,
+                          categoryId: dataFromChild.isEmpty
+                              ? categoryId
+                              : dataFromChild,
                         ),
                       ),
                     ),
@@ -71,18 +70,9 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
             ),
           ),
-          Container(
-            height: 100,
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(vertical: 30, horizontal: 8),
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(102, 255, 153, 0.7),
-              borderRadius: BorderRadius.circular(23),
-            ),
-            child: Center(child: Text('Contenitore Footer')),
-          )
         ],
       ),
+      bottomNavigationBar: FooterBar(),
     );
   }
 }
