@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progetto_totem/components/categories_bar.dart';
+import 'package:progetto_totem/components/product_bars.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key, required this.title});
@@ -15,7 +16,7 @@ class OrderScreen extends StatelessWidget {
             width: double.infinity,
             margin: EdgeInsets.symmetric(vertical: 30, horizontal: 8),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 102, 153, 0.6),
+              color: Color.fromRGBO(255, 102, 153, 0.5),
               borderRadius: BorderRadius.circular(23),
             ),
             child: Center(
@@ -48,9 +49,10 @@ class OrderScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(255, 102, 153, 0.4),
+                          color: Color.fromRGBO(255, 102, 153, 0.5),
                           borderRadius: BorderRadius.circular(23),
                         ),
+                        child: ProductBars(),
                       ),
                     ),
                   )
@@ -63,7 +65,7 @@ class OrderScreen extends StatelessWidget {
             width: double.infinity,
             margin: EdgeInsets.symmetric(vertical: 30, horizontal: 8),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 102, 153, 0.6),
+              color: Color.fromRGBO(102, 255, 153, 0.7),
               borderRadius: BorderRadius.circular(23),
             ),
             child: Center(child: Text('Contenitore Footer')),

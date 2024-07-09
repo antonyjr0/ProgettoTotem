@@ -27,7 +27,7 @@ class Splashscreen extends StatelessWidget {
               height: 100,
               width: 350,
               decoration: BoxDecoration(
-                color: Color.fromRGBO(255, 102, 153, 0.6),
+                color: Color.fromRGBO(255, 102, 153, 0.5),
                 borderRadius: BorderRadius.circular(23),
               ),
               child: Center(
