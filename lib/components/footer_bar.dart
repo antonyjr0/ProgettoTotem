@@ -8,7 +8,7 @@ class FooterBar extends StatelessWidget {
     List<Widget> listButton = [
       OutlinedButton(
         onPressed: () {},
-        child: Container(
+        child: SizedBox(
           height: 50,
           width: 150,
           child: Row(
@@ -18,7 +18,7 @@ class FooterBar extends StatelessWidget {
       ),
       OutlinedButton(
         onPressed: () {},
-        child: Container(
+        child: SizedBox(
           height: 50,
           width: 150,
           child: Row(

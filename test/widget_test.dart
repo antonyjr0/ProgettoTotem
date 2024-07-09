@@ -54,7 +54,7 @@ final List<Widget> sliders = slides
     .toList();
 
 class FlutterCarouselWidgetDemo extends StatelessWidget {
-  const FlutterCarouselWidgetDemo({Key? key}) : super(key: key);
+  const FlutterCarouselWidgetDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class FlutterCarouselWidgetDemo extends StatelessWidget {
 }
 
 class DemoItem extends StatelessWidget {
-  const DemoItem(this.title, this.route, {Key? key}) : super(key: key);
+  const DemoItem(this.title, this.route, {super.key});
 
   final String route;
   final String title;
@@ -123,7 +123,7 @@ class DemoItem extends StatelessWidget {
 }
 
 class CarouselDemoHome extends StatelessWidget {
-  const CarouselDemoHome({Key? key}) : super(key: key);
+  const CarouselDemoHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +162,7 @@ class CarouselDemoHome extends StatelessWidget {
 }
 
 class ComplicatedImageDemo extends StatelessWidget {
-  const ComplicatedImageDemo({Key? key}) : super(key: key);
+  const ComplicatedImageDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +197,7 @@ class ComplicatedImageDemo extends StatelessWidget {
 }
 
 class EnlargeStrategyDemo extends StatelessWidget {
-  const EnlargeStrategyDemo({Key? key}) : super(key: key);
+  const EnlargeStrategyDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -221,7 +221,7 @@ class EnlargeStrategyDemo extends StatelessWidget {
 }
 
 class PageChangedReason extends StatefulWidget {
-  const PageChangedReason({Key? key}) : super(key: key);
+  const PageChangedReason({super.key});
 
   @override
   State<PageChangedReason> createState() => _PageChangedReasonState();
@@ -295,7 +295,7 @@ class _PageChangedReasonState extends State<PageChangedReason> {
 }
 
 class ManuallyControlledSlider extends StatefulWidget {
-  const ManuallyControlledSlider({Key? key}) : super(key: key);
+  const ManuallyControlledSlider({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -370,7 +370,7 @@ class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
 }
 
 class FullscreenSliderDemo extends StatelessWidget {
-  const FullscreenSliderDemo({Key? key}) : super(key: key);
+  const FullscreenSliderDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -400,7 +400,7 @@ class FullscreenSliderDemo extends StatelessWidget {
 }
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
-  const CarouselWithIndicatorDemo({Key? key}) : super(key: key);
+  const CarouselWithIndicatorDemo({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -461,7 +461,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
 }
 
 class MultipleItemDemo extends StatelessWidget {
-  const MultipleItemDemo({Key? key}) : super(key: key);
+  const MultipleItemDemo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -511,7 +511,7 @@ class MultipleItemDemo extends StatelessWidget {
 }
 
 class ExpandableCarouselDemo extends StatefulWidget {
-  const ExpandableCarouselDemo({Key? key}) : super(key: key);
+  const ExpandableCarouselDemo({super.key});
 
   @override
   State<ExpandableCarouselDemo> createState() => _ExpandableCarouselDemoState();

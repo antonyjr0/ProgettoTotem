@@ -30,7 +30,7 @@ class _OrderScreenState extends State<OrderScreen> {
           HeaderBar(),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
+            child: SizedBox(
               height: 400,
               child: Row(
                 children: [

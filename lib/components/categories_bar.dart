@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:progetto_totem/services/utils.dart';
 
 class CategoriesBar extends StatefulWidget {
-  CategoriesBar({super.key, required this.callback});
+  const CategoriesBar({super.key, required this.callback});
 
   final void Function(String) callback;
 

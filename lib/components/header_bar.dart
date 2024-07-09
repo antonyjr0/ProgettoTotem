@@ -28,12 +28,12 @@ class HeaderBar extends StatelessWidget {
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text('Il tuo ordine: '), Text('0:00 €')],
+                  children: const [Text('Il tuo ordine: '), Text('0:00 €')],
                 ),
               ),
               OutlinedButton(
                 onPressed: () {},
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   width: 150,
                   child: Center(child: Text('Vai al pagamento')),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:progetto_totem/services/utils.dart';
 
