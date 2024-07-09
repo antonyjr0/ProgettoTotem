@@ -4,6 +4,7 @@ import 'package:progetto_totem/pages/order_screen.dart';
 
 class Splashscreen extends StatelessWidget {
   const Splashscreen({super.key, required this.title});
+
   final String title;
   @override
   Widget build(BuildContext context) {
