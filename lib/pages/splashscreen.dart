@@ -13,7 +13,9 @@ class Splashscreen extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => OrderScreen(title: "Order Screen"),
+            builder: (context) => OrderScreen(
+              title: 'Order Screen',
+            ),
           ),
         );
       },

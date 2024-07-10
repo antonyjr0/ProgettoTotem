@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:progetto_totem/providers/category_provider.dart';
 import 'package:progetto_totem/services/utils.dart';
 
-class CategoriesBar extends StatefulWidget {
-  const CategoriesBar({super.key, required this.callback});
+class CategoriesBar extends ConsumerStatefulWidget {
+  const CategoriesBar({super.key});
 
-  final void Function(String) callback;
+  //final void Function(String) callback;
 
   @override
-  State<StatefulWidget> createState() => _CategoriesBarState();
+  ConsumerState<CategoriesBar> createState() => _CategoriesBarState();
 }
 
-class _CategoriesBarState extends State<CategoriesBar> {
-  int selectedCategoryIndex = 0;
+class _CategoriesBarState extends ConsumerState<CategoriesBar> {
+  //int selectedCategoryIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     List<Widget> containersList = [];
+    String? selectedCategoryId = ref.watch(categoryProvider);
     for (var i = 0; i < Utils.categories.length; i++) {
+      var categoryItem = Utils.categories[i];
       containersList.add(
         Expanded(
           child: GestureDetector(
             onTap: () {
-              setState(
-                () {
-                  selectedCategoryIndex = i;
-                  widget.callback(
-                      Utils.categories[selectedCategoryIndex].categoryId);
-                },
-              );
+              ref
+                  .read(categoryProvider.notifier)
+                  .setCategory(Utils.categories[i].categoryId);
               print(i);
             },
             child: Padding(
@@ -36,11 +37,11 @@ class _CategoriesBarState extends State<CategoriesBar> {
                 width: 200,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: selectedCategoryIndex == i
+                  color: selectedCategoryId == categoryItem.categoryId
                       ? Color.fromRGBO(255, 105, 180, 1)
                       : Color.fromRGBO(255, 105, 180, 0.5),
                 ),
-                child: Center(child: Text(Utils.categories[i].name)),
+                child: Center(child: Text(categoryItem.name)),
               ),
             ),
           ),
