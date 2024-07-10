@@ -41,4 +41,12 @@ class Utils {
   static String getUUID() {
     return const Uuid().v8();
   }
+
+  static num getPrezzo(List<ProductItem> products) {
+    num result = 0;
+    for (var product in products) {
+      result += product.price;
+    }
+    return result;
+  }
 }

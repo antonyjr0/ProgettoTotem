@@ -14,9 +14,11 @@ class OrderProvider extends StateNotifier<OrderItem?> {
         rowId: Utils.getUUID(), qty: 1, productId: productId, extras: []));
   }
 
-  Future removeRow(String productId) async {
+  void removeRow(String productId) {
     // ignore: collection_methods_unrelated_type
-    state?.rows.remove(state?.rows.where((row) => row.productId == productId));
+    state?.rows.remove(() {
+      state?.rows.where((row) => row.productId == productId).last;
+    });
   }
 }
 

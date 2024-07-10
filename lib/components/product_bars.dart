@@ -62,7 +62,26 @@ class _ProductBarsState extends ConsumerState<ProductBars> {
                                                 BorderRadius.circular(10),
                                           ),
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          setState(() {
+                                            ref
+                                                .read(orderProvider.notifier)
+                                                .removeRow(
+                                                    filteredProduct.productId);
+                                            print(
+                                                '${ref.watch(orderProvider)?.rows.length}');
+                                            contatori[
+                                                filteredProduct.productId] = ref
+                                                    .watch(orderProvider)
+                                                    ?.rows
+                                                    .where((row) =>
+                                                        row.productId ==
+                                                        filteredProduct
+                                                            .productId)
+                                                    .length ??
+                                                0;
+                                          });
+                                        },
                                         child: Container(child: Text('-'))),
                                     Text(
                                         '${contatori[filteredProduct.productId] ?? 0}'),

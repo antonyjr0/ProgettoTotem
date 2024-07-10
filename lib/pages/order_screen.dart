@@ -46,9 +46,12 @@ class OrderScreen extends ConsumerWidget {
                         children: [
                           HeaderBar(),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SizedBox(
-                              height: 400,
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.6,
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.6),
+                                  borderRadius: BorderRadius.circular(20)),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -57,7 +60,6 @@ class OrderScreen extends ConsumerWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                          color: Colors.transparent,
                                           borderRadius:
                                               BorderRadius.circular(20),
                                         ),

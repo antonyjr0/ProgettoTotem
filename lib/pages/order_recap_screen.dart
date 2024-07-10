@@ -2,17 +2,27 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:progetto_totem/components/footer_bar.dart';
+import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:progetto_totem/pages/payment_screen.dart';
+import 'package:progetto_totem/providers/order_provider.dart';
+import 'package:progetto_totem/services/utils.dart';
 
-class OrderRecapScreen extends StatelessWidget {
+class OrderRecapScreen extends ConsumerWidget {
   const OrderRecapScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     List<Widget> elementiCentrali = [];
-    for (var i = 0; i < 3; i++) {
+    List<ProductItem> products = [];
+    for (int i = 0; i < ref.read(orderProvider)!.rows.length; i++) {
+      ProductItem product = Utils.items
+          .where((item) =>
+              item.productId == ref.read(orderProvider)!.rows[i].productId)
+          .first;
+      //print(product.description);
+      products.add(product);
       elementiCentrali.add(Card(
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.07,
@@ -22,13 +32,13 @@ class OrderRecapScreen extends StatelessWidget {
                 flex: 5,
                 child: Container(
                   margin: EdgeInsetsDirectional.all(10),
-                  child: Text('Gelato Piccolo'),
+                  child: Text(product.description),
                 ),
               ),
               Expanded(
                   flex: 1,
                   child: Container(
-                    child: Text('€ 2.5'),
+                    child: Text('€ ${product.price}'),
                   )),
               Expanded(
                 flex: 1,
@@ -94,7 +104,9 @@ class OrderRecapScreen extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.1,
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
                                   icon: Icon(Icons.arrow_back)),
                             ),
                             Expanded(
@@ -116,7 +128,17 @@ class OrderRecapScreen extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: Column(
-                        children: [...elementiCentrali],
+                        children: [
+                          SizedBox(
+                            height: 500,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: ListView(
+                              padding: EdgeInsets.all(10),
+                              scrollDirection: Axis.vertical,
+                              children: [...elementiCentrali],
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     Expanded(
@@ -159,7 +181,7 @@ class OrderRecapScreen extends StatelessWidget {
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: Text('€ 60.00'),
+                                  child: Text('€ ${Utils.getPrezzo(products)}'),
                                 )
                               ],
                             ),
