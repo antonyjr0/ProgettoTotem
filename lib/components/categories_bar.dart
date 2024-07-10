@@ -28,7 +28,7 @@ class _CategoriesBarState extends ConsumerState<CategoriesBar> {
               ref
                   .read(categoryProvider.notifier)
                   .setCategory(Utils.categories[i].categoryId);
-              print(i);
+              //print(i);
             },
             child: Padding(
               padding: const EdgeInsets.all(2.0),

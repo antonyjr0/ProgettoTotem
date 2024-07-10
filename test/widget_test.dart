@@ -242,14 +242,14 @@ class _PageChangedReasonState extends State<PageChangedReason> {
           IconButton(
             onPressed: () => setState(() {
               autoplay = !autoplay;
-              print('autoplay toggled');
+              //print('autoplay toggled');
             }),
             icon: Icon(autoplay ? Icons.pause : Icons.play_arrow),
           ),
           IconButton(
             onPressed: () => setState(() {
               controller = controller == null ? CarouselController() : null;
-              print('controller toggled');
+              //print('controller toggled');
             }),
             icon: Icon(
               controller == null ? Icons.gamepad_outlined : Icons.gamepad,
@@ -278,7 +278,7 @@ class _PageChangedReasonState extends State<PageChangedReason> {
                   onPageChanged: (_, reason) => setState(
                     () {
                       lastReason = reason;
-                      print(reason);
+                      //print(reason);
                     },
                   ),
                   controller: controller,

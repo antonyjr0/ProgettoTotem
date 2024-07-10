@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:progetto_totem/components/carosello_immagini.dart';
 import 'package:progetto_totem/components/footer_bar.dart';
 import 'package:progetto_totem/pages/order_screen.dart';
+import 'package:progetto_totem/providers/category_provider.dart';
+import 'package:progetto_totem/providers/order_provider.dart';
+import 'package:progetto_totem/services/utils.dart';
 
-class Splashscreen extends StatelessWidget {
+class Splashscreen extends ConsumerWidget {
   const Splashscreen({super.key, required this.title});
 
   final String title;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
+        ref
+            .read(categoryProvider.notifier)
+            .setCategory(Utils.categories[0].categoryId);
+        ref.read(orderProvider.notifier).init();
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => OrderScreen(
@@ -20,7 +28,7 @@ class Splashscreen extends StatelessWidget {
         );
       },
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(152, 251, 152, 0.5),
+        backgroundColor: Colors.black,
         body: Column(
           children: [
             Expanded(

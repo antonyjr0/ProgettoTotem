@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:progetto_totem/models/category_item.dart';
 import 'package:progetto_totem/models/extra_item.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
+import 'package:uuid/uuid.dart';
 
 class Utils {
   static List<CategoryItem> categories = [];
@@ -35,5 +36,9 @@ class Utils {
     for (int i = 0; i < objExtras.length; i++) {
       extras.add(ExtraItem.fromJson(objExtras[i]));
     }
+  }
+
+  static String getUUID() {
+    return const Uuid().v8();
   }
 }
