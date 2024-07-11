@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:progetto_totem/models/category_item.dart';
 import 'package:progetto_totem/models/extra_item.dart';
+import 'package:progetto_totem/models/order_item.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:uuid/uuid.dart';
 
@@ -48,5 +49,11 @@ class Utils {
       result += product.price;
     }
     return result;
+  }
+
+  static int getOrderRowsCount(OrderItem order, String productId) {
+    return order.rows.where((element) {
+      return element.productId == productId;
+    }).length;
   }
 }

@@ -10,15 +10,32 @@ class OrderProvider extends StateNotifier<OrderItem?> {
   }
 
   void addRow(String productId) {
-    state?.rows.add(OrderRowItem(
+    // state?.rows.add(
+    //   OrderRowItem(
+    //       rowId: Utils.getUUID(), qty: 1, productId: productId, extras: []),
+    // );
+    var clone = state?.clone() ?? OrderItem(rows: []);
+    clone.rows.add(OrderRowItem(
         rowId: Utils.getUUID(), qty: 1, productId: productId, extras: []));
+    state = clone;
   }
 
   void removeRow(String productId) {
-    // ignore: collection_methods_unrelated_type
-    state?.rows.remove(() {
-      state?.rows.where((row) => row.productId == productId).last;
-    });
+    var clone = state!.clone();
+    var list = clone.rows.where((row) => row.productId == productId);
+    if (list.isNotEmpty) {
+      clone.rows.remove(list.last);
+    }
+    state = clone;
+  }
+
+  void removeRowFromRecap(String? rowId) {
+    var clone = state!.clone();
+    if (rowId != null && rowId.isNotEmpty) {
+      var orderRow = clone.rows.firstWhere((row) => row.rowId == rowId);
+      clone.rows.remove(orderRow);
+    }
+    state = clone;
   }
 }
 

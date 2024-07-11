@@ -1,12 +1,11 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:progetto_totem/components/footer_bar.dart';
 
 class PaymentScreen extends StatelessWidget {
-  PaymentScreen({super.key});
+  const PaymentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +43,134 @@ class PaymentScreen extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(20),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       //logo
-                      Center(
-                        child: Row(
-                          children: [
-                            //Image.asset(),
-                          ],
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Center(
+                          child: SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: Image.asset(
+                              'lib/images/logo_3.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                       // Bottone Indietro ------- Dove Vuoi Pagare? ------- Bottone Info
-                      Row(),
-                      // Bottone Pagare Alla Cassa ------- Pagare Qui
-                      Row(),
-                      // Bottone Annulla l'ordine
-                      Row(),
+                      Expanded(
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.5),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25))),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      icon: FaIcon(
+                                        FontAwesomeIcons.arrowLeft,
+                                        size: 20,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Dove vuoi pagare?",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    IconButton(
+                                        onPressed: () {},
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.info,
+                                          size: 20,
+                                        ))
+                                  ],
+                                ),
+                                // Bottone Pagare Alla Cassa ------- Pagare Qui
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    OutlinedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Center(
+                                              child: SizedBox(
+                                                height: 100,
+                                                width: 100,
+                                                child: Image.asset(
+                                                  'lib/images/logo_3.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Text('Paga Qui'),
+                                        ],
+                                      ),
+                                    ),
+                                    OutlinedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(20.0),
+                                            child: Center(
+                                              child: SizedBox(
+                                                height: 100,
+                                                width: 100,
+                                                child: Image.asset(
+                                                  'lib/images/logo_3.png',
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Text('Paga Alla Cassa'),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                // Bottone Annulla l'ordine
+
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.xmark,
+                                    color: Colors.red,
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
                     ],
                   ),
                 ),

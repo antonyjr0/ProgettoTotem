@@ -18,6 +18,8 @@ class _CategoriesBarState extends ConsumerState<CategoriesBar> {
   @override
   Widget build(BuildContext context) {
     List<Widget> containersList = [];
+    //watch oltre a recuperare il provider, si aggancia al listener e quindi
+    // rimane in ascolto delle eventuali modifiche
     String? selectedCategoryId = ref.watch(categoryProvider);
     for (var i = 0; i < Utils.categories.length; i++) {
       var categoryItem = Utils.categories[i];

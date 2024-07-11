@@ -48,7 +48,7 @@ class OrderScreen extends ConsumerWidget {
                           Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              height: 400,
                               decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.6),
                                   borderRadius: BorderRadius.circular(20)),

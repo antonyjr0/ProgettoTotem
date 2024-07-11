@@ -14,9 +14,9 @@ class ProductBars extends ConsumerStatefulWidget {
 }
 
 class _ProductBarsState extends ConsumerState<ProductBars> {
-  Map<String, int> contatori = {};
   @override
   Widget build(BuildContext context) {
+    var order = ref.watch(orderProvider);
     List<ProductItem> filteredProducts = Utils.items.where((element) {
       return element.categoryId == ref.watch(categoryProvider);
     }).toList();
@@ -63,28 +63,18 @@ class _ProductBarsState extends ConsumerState<ProductBars> {
                                           ),
                                         ),
                                         onPressed: () {
+                                          ref
+                                              .read(orderProvider.notifier)
+                                              .removeRow(
+                                                  filteredProduct.productId);
                                           setState(() {
-                                            ref
-                                                .read(orderProvider.notifier)
-                                                .removeRow(
-                                                    filteredProduct.productId);
-                                            print(
-                                                '${ref.watch(orderProvider)?.rows.length}');
-                                            contatori[
-                                                filteredProduct.productId] = ref
-                                                    .watch(orderProvider)
-                                                    ?.rows
-                                                    .where((row) =>
-                                                        row.productId ==
-                                                        filteredProduct
-                                                            .productId)
-                                                    .length ??
-                                                0;
+                                            Utils.getOrderRowsCount(order!,
+                                                filteredProduct.productId);
                                           });
                                         },
                                         child: Container(child: Text('-'))),
                                     Text(
-                                        '${contatori[filteredProduct.productId] ?? 0}'),
+                                        '${Utils.getOrderRowsCount(order!, filteredProduct.productId)}'),
                                     OutlinedButton(
                                       style: ElevatedButton.styleFrom(
                                         shape: RoundedRectangleBorder(
@@ -95,19 +85,10 @@ class _ProductBarsState extends ConsumerState<ProductBars> {
                                         ref
                                             .read(orderProvider.notifier)
                                             .addRow(filteredProduct.productId);
-                                        print(
-                                            '${ref.watch(orderProvider)?.rows.length}');
+
                                         setState(() {
-                                          contatori[filteredProduct.productId] =
-                                              ref
-                                                      .watch(orderProvider)
-                                                      ?.rows
-                                                      .where((row) =>
-                                                          row.productId ==
-                                                          filteredProduct
-                                                              .productId)
-                                                      .length ??
-                                                  0;
+                                          Utils.getOrderRowsCount(
+                                              order, filteredProduct.productId);
                                         });
                                       },
                                       child: Text('+'),

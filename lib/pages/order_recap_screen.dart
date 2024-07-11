@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:progetto_totem/components/footer_bar.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:progetto_totem/pages/payment_screen.dart';
@@ -16,10 +16,10 @@ class OrderRecapScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     List<Widget> elementiCentrali = [];
     List<ProductItem> products = [];
-    for (int i = 0; i < ref.read(orderProvider)!.rows.length; i++) {
+    for (int i = 0; i < ref.watch(orderProvider)!.rows.length; i++) {
       ProductItem product = Utils.items
           .where((item) =>
-              item.productId == ref.read(orderProvider)!.rows[i].productId)
+              item.productId == ref.watch(orderProvider)!.rows[i].productId)
           .first;
       //print(product.description);
       products.add(product);
@@ -44,7 +44,10 @@ class OrderRecapScreen extends ConsumerWidget {
                 flex: 1,
                 child: Container(
                   child: IconButton(
-                    icon: Icon(Icons.menu),
+                    icon: FaIcon(
+                      FontAwesomeIcons.pencil,
+                      size: 20,
+                    ),
                     onPressed: () {},
                   ),
                 ),
@@ -53,8 +56,14 @@ class OrderRecapScreen extends ConsumerWidget {
                   flex: 1,
                   child: Container(
                     child: IconButton(
-                      icon: Icon(Icons.menu),
-                      onPressed: () {},
+                      icon: FaIcon(
+                        FontAwesomeIcons.xmark,
+                        size: 20,
+                      ),
+                      onPressed: () {
+                        ref.read(orderProvider.notifier).removeRowFromRecap(
+                            ref.read(orderProvider)?.rows[i].rowId);
+                      },
                     ),
                   )),
             ],
@@ -130,7 +139,7 @@ class OrderRecapScreen extends ConsumerWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 500,
+                            height: 350,
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: ListView(
                               padding: EdgeInsets.all(10),
