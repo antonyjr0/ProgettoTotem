@@ -34,28 +34,30 @@ class OrderScreen extends ConsumerWidget {
               ),
               Center(
                 child: Container(
+                  height: MediaQuery.of(context).size.height * 0.9,
                   decoration: BoxDecoration(
                     color: Color.fromRGBO(255, 105, 180, 0.5),
                     borderRadius: BorderRadius.circular(40),
                   ),
                   padding: EdgeInsets.all(20),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Column(
                         children: [
                           HeaderBar(),
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(5.0),
                             child: Container(
-                              height: 400,
+                              height: MediaQuery.of(context).size.height * 0.65,
+                              width: double.infinity,
                               decoration: BoxDecoration(
                                   color: Colors.white.withOpacity(0.6),
                                   borderRadius: BorderRadius.circular(20)),
                               child: Row(
                                 children: [
                                   Expanded(
-                                    flex: 1,
+                                    flex: 2,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
@@ -68,7 +70,7 @@ class OrderScreen extends ConsumerWidget {
                                     ),
                                   ),
                                   Expanded(
-                                    flex: 3,
+                                    flex: 5,
                                     child: Padding(
                                       padding:
                                           const EdgeInsets.fromLTRB(0, 8, 8, 8),

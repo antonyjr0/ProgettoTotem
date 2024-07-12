@@ -25,92 +25,86 @@ class _ProductBarsState extends ConsumerState<ProductBars> {
       var filteredProduct = filteredProducts[i];
       elementList.add(
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-            child: Container(
-              height: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Card(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: Color.fromRGBO(255, 192, 203, 0.7),
-                  ),
-                  child: Column(children: [
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Card(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Color.fromRGBO(255, 192, 203, 0.7),
+                ),
+                child: Column(children: [
+                  Expanded(
+                    flex: 5,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            filteredProduct.image!,
+                          ),
+                        ),
+                        Expanded(
+                          child: Center(
                             child: Text(filteredProduct.description),
-                          )),
-                          Expanded(
-                            child: Center(
-                              child: Center(
-                                child: Row(
-                                  key: Key(filteredProduct.productId),
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    OutlinedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          ref
-                                              .read(orderProvider.notifier)
-                                              .removeRow(
-                                                  filteredProduct.productId);
-                                          setState(() {
-                                            Utils.getOrderRowsCount(order!,
-                                                filteredProduct.productId);
-                                          });
-                                        },
-                                        child: Container(child: Text('-'))),
-                                    Text(
-                                        '${Utils.getOrderRowsCount(order!, filteredProduct.productId)}'),
-                                    OutlinedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                      ),
-                                      onPressed: () {
-                                        ref
-                                            .read(orderProvider.notifier)
-                                            .addRow(filteredProduct.productId);
-
-                                        setState(() {
-                                          Utils.getOrderRowsCount(
-                                              order, filteredProduct.productId);
-                                        });
-                                      },
-                                      child: Text('+'),
+                          ),
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: Row(
+                              key: Key(filteredProduct.productId),
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                OutlinedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      shape: CircleBorder(),
                                     ),
-                                  ],
+                                    onPressed: () {
+                                      ref
+                                          .read(orderProvider.notifier)
+                                          .removeRow(filteredProduct.productId);
+                                      setState(() {
+                                        Utils.getOrderRowsCount(
+                                            order!, filteredProduct.productId);
+                                      });
+                                    },
+                                    child: Container(child: Text('-'))),
+                                Text(
+                                    '${Utils.getOrderRowsCount(order!, filteredProduct.productId)}'),
+                                OutlinedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    shape: CircleBorder(),
+                                  ),
+                                  onPressed: () {
+                                    ref
+                                        .read(orderProvider.notifier)
+                                        .addRow(filteredProduct.productId);
+
+                                    setState(() {
+                                      Utils.getOrderRowsCount(
+                                          order, filteredProduct.productId);
+                                    });
+                                  },
+                                  child: Text('+'),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text('Personalizza'),
                         ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text('Personalizza'),
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
             ),
           ),
@@ -118,9 +112,12 @@ class _ProductBarsState extends ConsumerState<ProductBars> {
       );
     }
     return Container(
-      child: Column(children: [
-        ...elementList,
-      ]),
+      child: GridView.count(
+        crossAxisCount: 2,
+        children: [
+          ...elementList,
+        ],
+      ),
     );
   }
 }

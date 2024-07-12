@@ -28,9 +28,9 @@ class _HeaderBarsState extends ConsumerState<HeaderBar> {
       products.add(product);
     }
     return Container(
-      height: 100,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 30, horizontal: 8),
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.6),
         borderRadius: BorderRadius.circular(23),

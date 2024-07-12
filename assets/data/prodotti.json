@@ -3,6 +3,7 @@
         "productId": "001",
         "description": "Cono Piccolo",
         "price": 3.0,
+        "image": "lib/images/ice-cream-1432274_640.png",
         "categoryId": "C01",
         "extras": [
             {
@@ -23,6 +24,7 @@
         "productId": "002",
         "description": "Cono Medio",
         "price": 4.0,
+        "image": "lib/images/ice-cream-8866030_640.png",
         "categoryId": "C01",
         "extras": [
             {
@@ -43,6 +45,7 @@
         "productId": "003",
         "description": "Cono Grande",
         "price": 4.5,
+        "image": "lib/images/ice-cream-cone-154655_640.png",
         "categoryId": "C01",
         "extras": [
             {
@@ -63,6 +66,7 @@
         "productId": "004",
         "description": "Coppetta Piccola",
         "price": 3.0,
+        "image": "lib/images/2208-Coppa-Gelato-Biodegradabile-200-ml-768x768.jpg",
         "categoryId": "C02",
         "extras": [
             {
@@ -79,6 +83,7 @@
         "productId": "005",
         "description": "Coppetta Media",
         "price": 4.0,
+        "image": "lib/images/2208-Coppa-Gelato-Biodegradabile-200-ml-768x768.jpg",
         "categoryId": "C02",
         "extras": [
             {
@@ -95,6 +100,7 @@
         "productId": "006",
         "description": "Coppetta Grande",
         "price": 4.5,
+        "image": "lib/images/pexels-roman-odintsov-5061254.jpg",
         "categoryId": "C02",
         "extras": [
             {
@@ -111,6 +117,7 @@
         "productId": "007",
         "description": "Vaschetta 300g",
         "price": 5.0,
+        "image": "lib/images/download (1).jpg",
         "categoryId": "C03",
         "extras": [
             {
@@ -131,6 +138,7 @@
         "productId": "008",
         "description": "Vaschetta 600g",
         "price": 8.5,
+        "image": "lib/images/download (2).jpg",
         "categoryId": "C03",
         "extras": [
             {
@@ -151,6 +159,7 @@
         "productId": "009",
         "description": "Vaschetta 900g",
         "price": 10.0,
+        "image": "lib/images/download (3).jpg",
         "categoryId": "C03",
         "extras": [
             {
