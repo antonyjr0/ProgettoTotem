@@ -48,7 +48,16 @@ class OrderRecapScreen extends ConsumerWidget {
                       FontAwesomeIcons.pencil,
                       size: 20,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // showDialog(
+                      //     barrierDismissible: false,
+                      //     context: context,
+                      //     builder: (context) {
+                      //       return ExtrasPopup(
+                      //         item: product,
+                      //       );
+                      //     });
+                    },
                   ),
                 ),
               ),

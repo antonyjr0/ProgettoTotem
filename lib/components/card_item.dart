@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:progetto_totem/components/extras_popup.dart';
 import 'package:progetto_totem/models/order_item.dart';
 import 'package:progetto_totem/models/prdouct_item.dart';
 import 'package:progetto_totem/providers/order_provider.dart';
@@ -18,17 +19,22 @@ class CardItem extends ConsumerStatefulWidget {
 class _CardItemState extends ConsumerState<CardItem> {
   @override
   Widget build(BuildContext context) {
+    var orderRowsCount =
+        Utils.getOrderRowsCount(widget.order, widget.item.productId);
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
         ),
         child: Card(
+          elevation: 0,
+          margin: EdgeInsets.all(8),
+          color: Colors.white.withOpacity(0.5),
+          shadowColor: Colors.transparent,
           child: Container(
             height: MediaQuery.of(context).size.height * 0.5,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Color.fromRGBO(255, 192, 203, 0.7),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Column(children: [
               Expanded(
@@ -55,15 +61,17 @@ class _CardItemState extends ConsumerState<CardItem> {
                                 style: ElevatedButton.styleFrom(
                                   shape: CircleBorder(),
                                 ),
-                                onPressed: () {
-                                  ref
-                                      .read(orderProvider.notifier)
-                                      .removeRow(widget.item.productId);
-                                  setState(() {
-                                    Utils.getOrderRowsCount(
-                                        widget.order, widget.item.productId);
-                                  });
-                                },
+                                onPressed: orderRowsCount > 0
+                                    ? () {
+                                        ref
+                                            .read(orderProvider.notifier)
+                                            .removeRow(widget.item.productId);
+                                        setState(() {
+                                          Utils.getOrderRowsCount(widget.order,
+                                              widget.item.productId);
+                                        });
+                                      }
+                                    : null,
                                 child: Container(child: Text('-'))),
                             Text(
                                 '${Utils.getOrderRowsCount(widget.order, widget.item.productId)}'),
@@ -93,7 +101,18 @@ class _CardItemState extends ConsumerState<CardItem> {
               Expanded(
                 child: Container(
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: orderRowsCount > 0
+                        ? () {
+                            showDialog(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return ExtrasPopup(
+                                    item: widget.item,
+                                  );
+                                });
+                          }
+                        : null,
                     child: Text('Personalizza'),
                   ),
                 ),

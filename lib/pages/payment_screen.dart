@@ -161,7 +161,8 @@ class PaymentScreen extends StatelessWidget {
 
                                 IconButton(
                                   onPressed: () {
-                                    // Navigator.of(context).pop (route){
+                                    // Navigator.of(context).popUntil(context, route.first)
+                                    // (route){
                                     //   route.
                                     // } ,);
                                   },
