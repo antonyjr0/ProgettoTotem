@@ -23,9 +23,9 @@ class OrderRecapScreen extends ConsumerWidget {
           .first;
       //print(product.description);
       products.add(product);
-      elementiCentrali.add(Card(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.07,
+      elementiCentrali.add(SizedBox(
+        height: MediaQuery.of(context).size.height * 0.07,
+        child: Card(
           child: Row(
             children: [
               Expanded(
@@ -148,7 +148,7 @@ class OrderRecapScreen extends ConsumerWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 350,
+                            height: MediaQuery.of(context).size.height * 0.5,
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: ListView(
                               padding: EdgeInsets.all(10),

@@ -37,6 +37,12 @@ class OrderProvider extends StateNotifier<OrderItem?> {
     }
     state = clone;
   }
+
+  void saveChanges(OrderItem orderTemp) {
+    OrderItem orderTemp2;
+    orderTemp2 = orderTemp.clone();
+    state = orderTemp2;
+  }
 }
 
 final orderProvider = StateNotifierProvider<OrderProvider, OrderItem?>((ref) {

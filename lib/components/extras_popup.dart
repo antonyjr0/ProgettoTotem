@@ -18,6 +18,7 @@ class ExtrasPopup extends ConsumerStatefulWidget {
 class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
   Map<String, List<bool>> extrasCheckedMap = {};
   late OrderItem orderTemp;
+
   int selectedProductIndex = 0;
 
   @override
@@ -66,6 +67,7 @@ class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
     return Dialog(
       insetPadding: EdgeInsets.symmetric(vertical: 100, horizontal: 60),
       child: Card(
+        elevation: 0,
         child: Column(
           children: [
             Row(
@@ -127,7 +129,12 @@ class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
                       Navigator.pop(context);
                     },
                     child: Text('Annulla')),
-                ElevatedButton(onPressed: () {}, child: Text('Conferma')),
+                ElevatedButton(
+                    onPressed: () {
+                      ref.read(orderProvider.notifier).saveChanges(orderTemp);
+                      Navigator.pop(context);
+                    },
+                    child: Text('Conferma')),
               ],
             ),
           ],
