@@ -50,7 +50,8 @@ class _HeaderBarsState extends ConsumerState<HeaderBar> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Il tuo ordine: '),
-                    Text('€${Utils.getPrezzo(products)}')
+                    Text(
+                        '€${Utils.getPrezzo(ref.read(orderProvider)!.clone())}')
                   ],
                 ),
               ),

@@ -16,8 +16,8 @@ class ExtrasPopup extends ConsumerStatefulWidget {
 }
 
 class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
-  Map<String, List<bool>> extrasCheckedMap = {};
   late OrderItem orderTemp;
+  List<ExtraItem> extras = [];
 
   int selectedProductIndex = 0;
 
@@ -26,10 +26,14 @@ class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
     super.initState();
     orderTemp = ref.read(orderProvider)!.clone();
 
-    // Inizializza la mappa per memorizzare lo stato degli switch per ogni oggetto
-    for (var row in orderTemp.rows) {
-      extrasCheckedMap[row.rowId] =
-          List<bool>.filled(widget.item.extras!.length, false);
+    List<ProductExtraItem> productExtras = List.of(widget.item.extras ?? []);
+    productExtras.sort((a, b) {
+      return (a.order ?? 0) > (b.order ?? 0) ? 1 : -1;
+    });
+    for (var i = 0; i < productExtras.length; i++) {
+      extras.add(Utils.extras.firstWhere((e) {
+        return e.extraId == productExtras[i].extraId;
+      }));
     }
   }
 
@@ -39,24 +43,33 @@ class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
     List<OrderRowItem> rowsPerProduct = orderTemp.rows.where((element) {
       return element.productId == widget.item.productId;
     }).toList();
-    String rowId = orderTemp.rows[selectedProductIndex].rowId;
 
-    // Recupera la lista degli stati degli switch per il prodotto corrente
-    List<bool> extrasChecked = extrasCheckedMap[rowId]!;
+    OrderRowItem selectedRow = rowsPerProduct[selectedProductIndex];
 
-    for (var i = 0; i < widget.item.extras!.length; i++) {
-      ExtraItem extra = Utils.extras.where((element) {
-        return element.extraId == widget.item.extras![i].extraId;
-      }).first;
+    for (var i = 0; i < extras.length; i++) {
+      var extra = extras[i];
+      var isChecked = selectedRow.extras!
+          .any((element) => element.extraId == extra.extraId);
+
       extrasList.add(Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(extra.description, style: TextStyle(fontSize: 15)),
+          Text('${extra.description} - ${extra.price} €',
+              style: TextStyle(fontSize: 15)),
           Switch(
-            value: extrasChecked[i],
+            value: isChecked,
             onChanged: (value) {
               setState(() {
-                extrasChecked[i] = value;
+                isChecked = value;
+                if (value) {
+                  selectedRow.extras ??= [];
+                  selectedRow.extras!
+                      .add(OrderExtraItem(extraId: extra.extraId, qty: 1));
+                } else {
+                  selectedRow.extras!.removeWhere((e) {
+                    return e.extraId == extra.extraId;
+                  });
+                }
               });
             },
           )
@@ -116,6 +129,7 @@ class _ExtrasPopupState extends ConsumerState<ExtrasPopup> {
             SizedBox(
               height: 350,
               child: ListView(
+                shrinkWrap: true,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 scrollDirection: Axis.vertical,
                 children: [...extrasList],

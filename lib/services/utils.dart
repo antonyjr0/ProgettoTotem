@@ -43,12 +43,32 @@ class Utils {
     return const Uuid().v8();
   }
 
-  static num getPrezzo(List<ProductItem> products) {
-    num result = 0;
-    for (var product in products) {
-      result += product.price;
+  static num getPrezzo(OrderItem order) {
+    double total = 0;
+    for (int i = 0; i < order.rows.length; i++) {
+      OrderRowItem rowItem = order.rows[i];
+      int productIndex = Utils.items.indexWhere(
+        (element) {
+          return element.productId == rowItem.productId;
+        },
+      );
+      ProductItem p = items[productIndex];
+      total += p.price;
+
+      // aggiungo il prezzo di eventuali extra
+      if (rowItem.extras != null && rowItem.extras!.isNotEmpty) {
+        for (int j = 0; j < rowItem.extras!.length; j++) {
+          int extraIndex = Utils.extras.indexWhere(
+            (element) {
+              return element.extraId == rowItem.extras![j].extraId;
+            },
+          );
+          ExtraItem extra = Utils.extras[extraIndex];
+          total += extra.price?.toDouble() ?? 0;
+        }
+      }
     }
-    return result;
+    return total;
   }
 
   static int getOrderRowsCount(OrderItem order, String productId) {

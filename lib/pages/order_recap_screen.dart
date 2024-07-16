@@ -153,6 +153,7 @@ class OrderRecapScreen extends ConsumerWidget {
                             child: ListView(
                               padding: EdgeInsets.all(10),
                               scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
                               children: [...elementiCentrali],
                             ),
                           )
@@ -199,7 +200,8 @@ class OrderRecapScreen extends ConsumerWidget {
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: Text('€ ${Utils.getPrezzo(products)}'),
+                                  child: Text(
+                                      '€ ${Utils.getPrezzo(ref.read(orderProvider)!.clone())}'),
                                 )
                               ],
                             ),
